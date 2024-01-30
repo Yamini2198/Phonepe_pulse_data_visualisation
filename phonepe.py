@@ -193,7 +193,7 @@ if selected == "Explore Data":
             st.markdown("## :violet[Overall State Data - Transactions Amount]")
             mycursor.execute(f"select state, sum(count) as Total_Transactions, sum(amount) as Total_amount from map_trans where year = {Year} and quarter = {Quarter} group by state order by state")
             df1 = pd.DataFrame(mycursor.fetchall(),columns= ['State', 'Total_Transactions', 'Total_amount'])
-            df2 = pd.read_csv("D:/practices/Statenames.csv")
+            df2 = pd.read_csv("D:/practices/phonepulse_data_visualisation/Statenames.csv")
             df1.State = df2
 
             fig = px.choropleth(df1,geojson="https://gist.githubusercontent.com/jbrobst/56c13bbbf9d97d187fea01ca62ea5112/raw/e388c4cae20aa53cb5090210a42ebb9b765c0a36/india_states.geojson",
@@ -211,7 +211,7 @@ if selected == "Explore Data":
             st.markdown("## :violet[Overall State Data - Transactions Count]")
             mycursor.execute(f"select state, sum(count) as Total_Transactions, sum(amount) as Total_amount from map_trans where year = {Year} and quarter = {Quarter} group by state order by state")
             df1 = pd.DataFrame(mycursor.fetchall(),columns= ['State', 'Total_Transactions', 'Total_amount'])
-            df2 = pd.read_csv("D:/practices/Statenames.csv")
+            df2 = pd.read_csv("D:/practices/phonepulse_data_visualisation/Statenames.csv")
             df1.Total_Transactions = df1.Total_Transactions.astype(int)
             df1.State = df2
 
@@ -271,7 +271,7 @@ if selected == "Explore Data":
         st.markdown("## :violet[Overall State Data - User App opening frequency]")
         mycursor.execute(f"select state, sum(Registered_user) as Total_Users, sum(App_opens) as Total_Appopens from map_user where year = {Year} and quarter = {Quarter} group by state order by state")
         df1 = pd.DataFrame(mycursor.fetchall(), columns=['State', 'Total_Users','Total_Appopens'])
-        df2 = pd.read_csv("D:/practices/Statenames.csv")
+        df2 = pd.read_csv("D:/practices/phonepulse_data_visualisation/Statenames.csv")
         df1.Total_Appopens = df1.Total_Appopens.astype(float)
         df1.State = df2
         
